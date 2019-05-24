@@ -30,14 +30,6 @@ class Record():
     def get_timestamp(self) -> datetime:
         return self.__timestamp
 
-    def to_dict(self) -> dict:
-        return {
-            'content': self.get_content(),
-            'hash': self.get_hex_hash(),
-            'previous_hash': self.get_previous_hash(),
-            'timestamp': self.get_timestamp()
-        }
-
     def verify(self) -> bool:
         original_hash = self.get_hex_hash()
         current_hash = self.__build(self.__content, self.__previous_hash, self.__timestamp).hexdigest()
